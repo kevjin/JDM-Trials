@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+<script src="jspsych-5.0.3/jspsych.js"></script>
+<script src="jspsych-5.0.3/plugins/jspsych-text.js"></script>
+<script src="jspsych-5.0.3/plugins/jspsych-single-stim.js"></script>
+<script src="jspsych-5.0.3/plugins/jspsych-survey-text.js"></script>
+<script src="jspsych-5.0.3/plugins/jspsych-free-sort.js"></script>
+<! associate our file with the css styling>
+<link href="jspsych-5.0.3/css/jspsych.css" rel="stylesheet" type="text/css"></link>
+</head>
+<body>
+</body>
+<script>
+    var timeline = [];
+
+
+
+    var instructTrial = {
+        type: "text",
+        text: "<center><br><br><b>Now please read the following situation:<br><br>Imagine that, in the near future, scientists invent a compound called Salinex. Salinex is a very unique drug. It only has one effect: it causes people to feel pain. This effect is dose dependent, so that one tablet causes slight discomfort, while 4 tablets causes intense pain. Importantly, there is no lasting effect of this drug, and regardless of the dosage, the pain lasts for only a few minutes. Now imagine that you are given 3 pain tablets, and have to divide them up between each of the pairs below. Your task is simply to indicate how many pills each of these people would get. Keep in mind that some people may be more sensitive to pain than others.<br><br>Press any key to proceed</b></center>"
+    }
+
+    var finishedTrial = {
+        type: "text",
+        text: "<center><br><br><b>You have finished the trials, congratulations!</b></center>"
+    }
+
+    timeline.push(instructTrial);
+
+    var painpillTrial = {
+        type: 'free-sort',
+        stimuli: ['coolpill.png','coolpill.png','coolpill.png'],
+        labels: ['Dalai Lama', 'Mother Teresa'],
+        prompt: "<p>How would you distribute the 3 pills? </p>"
+    }
+
+    timeline.push(painpillTrial);
+    timeline.push(painpillTrial);
+    timeline.push(painpillTrial);
+    timeline.push(finishedTrial);
+
+    jsPsych.init({
+        timeline: timeline,
+        fullscreen: false
+    });
+
+</script>
+</html>
